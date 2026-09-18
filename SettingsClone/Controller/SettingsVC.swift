@@ -8,6 +8,8 @@
 import UIKit
 
 class SettingsVC: UIViewController {
+    // MARK: Properties
+    
     var settingsList: SettingsModel? = nil
     private lazy var settingsTableView: UITableView = {
         let tableView = UITableView()
@@ -15,6 +17,8 @@ class SettingsVC: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    
+    // MARK: - View Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +29,8 @@ class SettingsVC: UIViewController {
         setUpUI()
         settingsList = SettingsModel.getSettingsData()
     }
+    
+    // MARK: - Setting up the UI
     
     func setUpUI() {
         self.title = "Settings"
@@ -39,6 +45,8 @@ class SettingsVC: UIViewController {
         ])
     }
 }
+
+// MARK: - Table view data source methods
 
 extension SettingsVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -80,6 +88,8 @@ extension SettingsVC: UITableViewDataSource {
         return cell ?? UITableViewCell()
     }
 }
+
+// MARK: - Table view delegate methods
 
 extension SettingsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
